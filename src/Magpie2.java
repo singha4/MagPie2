@@ -31,9 +31,11 @@ public class Magpie2
 	public String getResponse(String statement)
 	{
 		String response = "";
-        if (statement.trim()>= 0)
+        String full = statement.trim();
+        int length = full.length();
+        if(length < 1)
         {
-            response = "";
+            return "Say something, please";
         }
 		if (statement.indexOf("no") >= 0)
 		{
@@ -49,11 +51,30 @@ public class Magpie2
         else if (statement.indexOf("cat") >= 0
                 || statement.indexOf("dog") >= 0)
         {
-            response = "Tell me more about about your pets";
+            if(statement.indexOf("cat") >= 0 && statement.indexOf("dog") >= 0)
+            {
+                response = "Tell me more about about your cat and dog";
+            }
+            else
+            {
+                response = "Tell me more about about your pets";
+            }
         }
         else if (statement.indexOf("Mr.")>= 0)
         {
             response = "He sounds like a good teacher";
+        }
+        else if (statement.indexOf("ok")>= 0)
+        {
+            response = "Glad you agree.";
+        }
+        else if (statement.indexOf("Good")>= 0)
+        {
+            response = "It is good.";
+        }
+        else if (statement.indexOf("Awesome")>= 0)
+        {
+            response = "I know right!";
         }
 		else
 		{
